@@ -2,7 +2,11 @@ import React from 'react'
 import {Text, StyleSheet, View} from 'react-native'
 
 const RestaurantList = () => {
-  return <Text>RestaurantList</Text>
+  return (
+    <View>
+      <Text>RestaurantList</Text>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({})
