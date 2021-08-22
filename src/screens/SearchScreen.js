@@ -2,6 +2,7 @@ import React from 'react'
 import {Text, StyleSheet, View} from 'react-native'
 import SearchBar from '../components/SearchBar'
 import useResults from '../hooks/useResults'
+import ResultsList from '../components/ResultsList'
 
 const SearchScreen = () => {
   const [term, setTerm] = React.useState('')
@@ -17,7 +18,12 @@ const SearchScreen = () => {
       {status === statusOptions.error ? <Text>{error}</Text> : null}
       {status === statusOptions.loading ? <Text>Loading...</Text> : null}
       {status === statusOptions.idle ? (
-        <Text>We have found {results.length} results.</Text>
+        <>
+          <Text>We have found {results.length} results.</Text>
+          <ResultsList title="Cost Effective" />
+          <ResultsList title="Bit Pricier" />
+          <ResultsList title="Big Spender!" />
+        </>
       ) : null}
     </View>
   )
