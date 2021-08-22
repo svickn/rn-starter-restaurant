@@ -33,7 +33,7 @@ export default () => {
   }
 
   React.useEffect(() => {
-    searchApi('pasta')
+    searchApi('')
   }, [])
 
   return {searchApi, results, status, error, statusOptions}
