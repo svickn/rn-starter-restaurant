@@ -6,14 +6,14 @@ import ResultsList from '../components/ResultsList'
 
 const SearchScreen = () => {
   const [term, setTerm] = React.useState('')
-  const {searchApi, results, error, status, statusOptions} = useResults()
+  const [searchApi, results, status, error, statusOptions] = useResults()
 
   const filterResultsByPrice = price => {
     return results.filter(r => r.price === price)
   }
 
   return (
-    <View style={{flex: 1}}>
+    <>
       <SearchBar
         term={term}
         onTermChange={setTerm}
@@ -37,7 +37,7 @@ const SearchScreen = () => {
           />
         </ScrollView>
       ) : null}
-    </View>
+    </>
   )
 }
 

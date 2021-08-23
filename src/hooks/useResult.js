@@ -7,24 +7,17 @@ const statusOptions = {
   error: 'error',
 }
 
-export default () => {
-  const [results, setResults] = React.useState([])
+export default id => {
+  const [result, setResult] = React.useState(null)
   const [error, setError] = React.useState()
   const [status, setStatus] = React.useState(statusOptions.loading)
 
-  const searchApi = async searchTerm => {
+  const query = async id => {
     setStatus(statusOptions.loading)
     setError('')
     try {
-      const response = await yelp.get('/search', {
-        params: {
-          limit: 50,
-          term: searchTerm,
-          location: 'baton rouge, la',
-        },
-      })
-
-      setResults(response.data.businesses)
+      const response = await yelp.get(`/${id}`)
+      setResult(response.data)
       setStatus(statusOptions.idle)
     } catch (error) {
       setError('Something went wrong!')
@@ -33,8 +26,8 @@ export default () => {
   }
 
   React.useEffect(() => {
-    searchApi('')
-  }, [])
+    query(id)
+  }, [id])
 
-  return [searchApi, results, status, error, statusOptions]
+  return [result, status, error, statusOptions]
 }
